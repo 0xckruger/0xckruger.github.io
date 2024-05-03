@@ -21,14 +21,71 @@
   <div class="header">
       <h1>
         <span class="site-title">Cameron Kruger</span>
-        <span class="site-description">developer/hacker</span>
+        <span class="site-description">developer & hacker</span>
+<!--        <span>&nbsp;</span>-->
       </h1>
-      <div class="header-icons">
-        <a aria-label="Send me an email" href="mailto:cameron.r.kruger@gmail.com"><i class="icon fa fa-envelope"></i></a>
-        <a aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/cameron-kruger-6b4b82122/"><i class="icon fa fa-linkedin" aria-hidden="true"></i></a>
-        <a aria-label="My Github" target="_blank" href="https://github.com/ckruger097"><i class="icon fa fa-github-alt" aria-hidden="true"></i></a>
-        <a aria-label="My Resume" target="_blank" href="/assets/files/Cameron_Kruger_Resume_Redacted_2023.pdf"><i class="icon fa fa-file-pdf-o" aria-hidden="true"></i></a>
+    <div class="header-icons">
+      <div class="icon-wrapper">
+        <i class="icon fa fa-envelope" onclick="copyEmail()" aria-label="Copy my email address"></i>
+        <span class="icon-text">Copy Email</span>
       </div>
+      <a class="icon-wrapper" aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/cameron-kruger-6b4b82122/">
+        <i class="icon fa fa-linkedin" aria-hidden="true"></i>
+        <span class="icon-text">LinkedIn</span>
+      </a>
+      <a class="icon-wrapper" aria-label="My Github" target="_blank" href="https://github.com/ckruger097">
+        <i class="icon fa fa-github-alt" aria-hidden="true"></i>
+        <span class="icon-text">GitHub</span>
+      </a>
+      <a class="icon-wrapper" aria-label="My Resume" target="_blank" href="/assets/files/Cameron_Kruger_Resume_Redacted_2023.pdf">
+        <i class="icon fa fa-file-pdf-o" aria-hidden="true"></i>
+        <span class="icon-text">Resume</span>
+      </a>
+    </div>
+
+    <style>
+      .icon-wrapper {
+        position: relative;
+        display: inline-block;
+        margin: 0 10px;
+        cursor: pointer;
+      }
+
+      .icon-text {
+        visibility: hidden;
+        width: 100px;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        transition: opacity 0.3s;
+        font-size: 12px;
+      }
+
+      .icon-wrapper:hover .icon-text {
+        visibility: visible;
+        opacity: 1;
+      }
+    </style>
+
+    <script>
+      function copyEmail() {
+        const email = 'cameron.r.kruger@gmail.com';
+        const tempInput = document.createElement('input');
+        tempInput.value = email;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+      }
+    </script>
       <div class="header-links">
         <a class="link" href="#about" data-scroll>About Me</a>
         <a class="link" href="#projects" data-scroll>Projects</a>
