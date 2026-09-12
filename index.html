@@ -196,6 +196,19 @@
     }
   }
   ctx.putImageData(img, 0, 0);
+
+  /* size to a whole number of device pixels per canvas pixel so the dither stays even */
+  function fit(){
+    var dpr = window.devicePixelRatio || 1;
+    var s = window.innerWidth <= 600
+      ? Math.floor((c.parentNode.clientWidth - 2) * dpr / W)  /* fill the column, never overflow */
+      : Math.round(240 * dpr / W);                            /* ~240px beside the name */
+    s = Math.max(1, s);
+    c.style.width  = (s * W / dpr + 2) + 'px';
+    c.style.height = (s * H / dpr + 2) + 'px';
+  }
+  fit();
+  window.addEventListener('resize', fit);
 })();
 </script>
 
