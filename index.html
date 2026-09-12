@@ -1,244 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-  <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>👋Cameron Kruger👨‍💻 </title>
-  <meta name="description" content="Cameron Kruger's personal portfolio website. Low-latency and decentralized trading software engineer. Find out about my resume, projects, and how to get in contact with me here.">
-  <meta name="image" property="og:image" content="/assets/img/meta_img.png">
-    <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
-    <link rel="stylesheet" href="/assets/css/main.css">
+<title>ckruger.xyz</title>
+<meta name="description" content="Cameron Kruger. Software engineer working in trading, with a long-running interest in crypto. Rust, market data, on-chain execution.">
+<link rel="canonical" href="https://ckruger.xyz/">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="ckruger.xyz">
+<meta property="og:description" content="Cameron Kruger. Software engineer working in trading, with a long-running interest in crypto.">
+<meta property="og:url" content="https://ckruger.xyz/">
+<meta property="og:image" content="https://ckruger.xyz/assets/img/og.png">
+<meta name="twitter:card" content="summary_large_image">
+
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
 <link rel="manifest" href="/site.webmanifest">
-  </head>
 
-  <body>
-      <div id="particles-js">
-  <div class="header">
-      <h1>
-        <span class="site-title">Cameron Kruger</span>
-        <span class="site-description">developer & hacker</span>
-<!--        <span>&nbsp;</span>-->
-      </h1>
-    <div class="header-icons">
-      <div class="icon-wrapper">
-        <i class="icon fa fa-envelope" onclick="copyEmail()" aria-label="Copy my email address"></i>
-        <span class="icon-text">Copy Email</span>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fragment+Mono:ital@0;1&display=swap">
+
+<style>
+  :root{
+    color-scheme: dark;
+    --bg:#0C0D0C;
+    --text:#C9CCC6;
+    --dim:#6C7069;
+    --faint:#31352F;
+    --hot:#7FC79E;
+    --mono:"Fragment Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--mono);
+       font-size:15px; line-height:1.85; -webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  ::selection{background:rgba(127,199,158,.25)}
+  :focus-visible{outline:1px solid var(--hot); outline-offset:3px}
+
+  .page{max-width:640px; margin:0 auto; padding:60px 28px 70px}
+
+  .top{display:flex; gap:28px; align-items:flex-start; flex-wrap:wrap}
+  #plate{width:240px; height:132px; image-rendering:pixelated;
+         image-rendering:crisp-edges; display:block; border:1px solid var(--faint)}
+  .id{min-width:0; padding-top:2px}
+  h1{font-size:1.65rem; font-weight:400; letter-spacing:.01em; margin:0 0 16px; line-height:1.1}
+  .stack{display:flex; flex-direction:column; gap:1px; font-size:.92rem}
+  .stack a{color:var(--dim); text-decoration:none; width:max-content}
+  .stack a u{text-decoration:underline; text-underline-offset:2px}
+  .stack a:hover{color:var(--hot)}
+  .br{color:var(--faint)}
+
+  hr{border:none; border-top:1px solid var(--faint); margin:30px 0}
+
+  p{margin:0 0 17px; font-size:.92rem}
+  p:last-child{margin-bottom:0}
+  p.dim{color:var(--dim)}
+  ul.likes{list-style:none; margin:8px 0 0; padding:0 0 0 2em; font-size:.92rem; line-height:1.62}
+  ul.likes li{padding-left:1.35em; text-indent:-1.35em}
+  ul.likes li::before{content:"\25C7\A0"; color:var(--dim)}
+
+  .contact{font-size:.92rem; line-height:1.9}
+  .contact .lbl{color:var(--dim)}
+  .contact a{color:var(--text); text-decoration:underline; text-underline-offset:2px}
+  .contact a:hover{color:var(--hot)}
+
+  @media (max-width:600px){
+    .page{padding:38px 22px 56px}
+    #plate{width:100%; height:auto; aspect-ratio:240 / 132}
+    h1{font-size:1.4rem}
+  }
+</style>
+</head>
+<body>
+
+<!-- try: curl -s https://ckruger.xyz/hi -->
+<div class="page">
+  <div class="top">
+    <canvas id="plate" width="120" height="66"
+            aria-label="Dithered drawing of a mountain range at sunrise"></canvas>
+    <div class="id">
+      <h1>ckruger.xyz</h1>
+      <div class="stack">
+        <a href="https://github.com/0xckruger"><span class="br">[</span><u>github</u><span class="br">]</span></a>
+        <a href="https://ckruger.bearblog.dev/"><span class="br">[</span><u>blog</u><span class="br">]</span></a>
+        <a href="/assets/files/Cameron_Kruger_Resume_Trading_Systems_Public.pdf"><span class="br">[</span><u>resume</u><span class="br">]</span></a>
+        <a href="https://www.linkedin.com/in/cameron-kruger-6b4b82122/"><span class="br">[</span><u>linkedin</u><span class="br">]</span></a>
       </div>
-      <a class="icon-wrapper" aria-label="My LinkedIn" target="_blank" href="https://www.linkedin.com/in/cameron-kruger-6b4b82122/">
-        <i class="icon fa fa-linkedin" aria-hidden="true"></i>
-        <span class="icon-text">LinkedIn</span>
-      </a>
-      <a class="icon-wrapper" aria-label="My Github" target="_blank" href="https://github.com/0xckruger">
-        <i class="icon fa fa-github-alt" aria-hidden="true"></i>
-        <span class="icon-text">GitHub</span>
-      </a>
-      <a class="icon-wrapper" aria-label="My Resume" target="_blank" href="/assets/files/Cameron_Kruger_Resume_Redacted_2025.pdf">
-        <i class="icon fa fa-file-pdf-o" aria-hidden="true"></i>
-        <span class="icon-text">Resume</span>
-      </a>
     </div>
-
-    <style>
-      .icon-wrapper {
-        position: relative;
-        display: inline-block;
-        margin: 0 10px;
-        cursor: pointer;
-      }
-
-      .icon-text {
-        visibility: hidden;
-        width: 100px;
-        background-color: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 5px;
-        position: absolute;
-        z-index: 1;
-        bottom: 100%;
-        left: 50%;
-        transform: translateX(-50%);
-        opacity: 0;
-        transition: opacity 0.3s;
-        font-size: 12px;
-      }
-
-      .icon-wrapper:hover .icon-text {
-        visibility: visible;
-        opacity: 1;
-      }
-    </style>
-
-    <script>
-      function copyEmail() {
-        const email = 'cameron.r.kruger@gmail.com';
-        const tempInput = document.createElement('input');
-        tempInput.value = email;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-      }
-    </script>
-      <div class="header-links">
-        <a class="link" href="#about" data-scroll>About Me</a>
-        <a class="link" href="#projects" data-scroll>Projects</a>
-      </div>
   </div>
-  <a class="down" href="#about" data-scroll><i class="icon fa fa-chevron-down" aria-hidden="true"></i></a>
-</div>
 
-      <section id="about">
-         <div class="user-details">
-  <h1> Hi there, I'm Cameron </h1>
-  <p>
-    <br>
-    What interests me: participating in niche communities, uncovering emerging tech, and seizing untapped opportunities.
-    That's why I was the 'Linux proselytizer' in high-school, writing scripts for roleplay game servers as a side
-    hustle, and trading tokens on EtherDelta (RIP ❤️) at 18.
-    <br>
-    <br>
-    Fast-forward to today, and I've channeled that passion into my work. Currently, I'm optimizing trading systems to be
-    more robust through automation, modernizing our backend to scale, and assisting traders in discovering alpha. I've
-    also developed several widely used internal tools & libraries to help devs & quants alike.
-    <br>
-    <br>
-    When I hear about a team tackling a complex problem in an innovative way, I'm all ears. But more than just ideas,
-    I'm drawn to people who know how to execute. If you're part of a team like that and need someone to help make things
-    happen, drop me a line or connect with me on one of the links above ⬆️. Always happy to chat.
+  <hr>
+
+  <p>hi, i'm cam. i'm a software engineer working in hft, specifically in low latency distributed computing.</p>
+
+  <p>i like finding niche communities and tech that is ahead of its time. that's how i ended up
+    being the linux proselytizer in high school, writing scripts for roleplay game servers,
+    and trading tokens on etherdelta (rip) at 18. if you're a part of something cutting edge you want to share,
+    please message me!</p>
+
+  <p>right now i work on java-based trading systems at IMC Trading. outside of work i've been spending most of my
+    time in rust, building exchange market data tools and a modular arbitrage bot for evm l2s. i've also been digging
+    into the internals of LLM inference thru vLLM.
   </p>
-   </div>
 
-        <div class="user" style="display: flex; flex-direction: column; align-items: center;">
-          <div class="tech" style="display: flex; flex-direction: column; align-items: center;">
-            <h2>Languages I know</h2>
-            <div style="display: flex;">
-              <div style="margin: 0 10px; cursor: pointer;" onclick="toggleDescription('python', 'description')">
-                <i class="devicon-python-plain colored"></i>
-              </div>
-              <div style="margin: 0 10px; cursor: pointer;" onclick="toggleDescription('java', 'description')">
-                <i class="devicon-java-plain colored"></i>
-              </div>
-              <div style="margin: 0 10px; cursor: pointer;" onclick="toggleDescription('rust', 'description')">
-                <i class="devicon-rust-original colored"></i>
-              </div>
-              <div style="margin: 0 10px; cursor: pointer;" onclick="toggleDescription('go', 'description')">
-                <i class="devicon-go-line colored"></i>
-              </div>
-            </div>
-            <div id="description" style="margin-top: 20px; opacity: 0; transition: opacity 0.5s; font-size: 16px; max-width: 100%; padding: 0 20px; box-sizing: border-box;"></div>
-          </div>
+  <p>some other things i'm interested in:</p>
+  <ul class="likes">
+    <li>p2p networking</li>
+    <li>privacy/cryptographic tech</li>
+    <li>self hosting</li>
+    <li>mountain biking</li>
+    <li>sport climbing</li>
+    <li>skiing</li>
+    <li>van/bus conversions</li>
+    <li>my 2 cats, george &amp; elaine</li>
+  </ul>
 
-          <div class="tech" style="display: flex; flex-direction: column; align-items: center;">
-            <h2>Tech I like</h2>
-            <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-              <div style="margin: 10px; cursor: pointer; flex: 1 0 auto;" onclick="toggleDescription('flask', 'description2')">
-                <i class="devicon-flask-original-wordmark colored"></i>
-              </div>
-              <div style="margin: 10px; cursor: pointer; flex: 1 0 auto;" onclick="toggleDescription('apache', 'description2')">
-                <i class="devicon-apache-plain-wordmark colored"></i>
-              </div>
-              <div style="margin: 10px; cursor: pointer; flex: 1 0 auto;" onclick="toggleDescription('kubernetes', 'description2')">
-                <i class="devicon-kubernetes-plain-wordmark colored"></i>
-              </div>
-              <div style="margin: 10px; cursor: pointer; flex: 1 0 auto;" onclick="toggleDescription('grafana', 'description2')">
-                <i class="devicon-grafana-plain-wordmark colored"></i>
-              </div>
-              <div style="margin: 10px; cursor: pointer; flex: 1 0 auto;" onclick="toggleDescription('linux', 'description2')">
-                <i class="devicon-linux-plain colored"></i>
-              </div>
-              <div style="margin: 10px; cursor: pointer; flex: 1 0 auto;" onclick="toggleDescription('mysql', 'description2')">
-                <i class="devicon-mysql-original colored"></i>
-              </div>
-            </div>
-            <div id="description2" style="margin-top: 20px; opacity: 0; transition: opacity 0.5s; font-size: 16px; max-width: 100%; padding: 0 20px; box-sizing: border-box;"></div>
-          </div>
-          <p> (🖱️ click icons above for more detail 🧐)</p>
-        </div>
+  <hr>
 
-        <script>
-          const descriptions = {
-            python: "<b>Python</b>: I'm a daily Python user, and use it for most of my trading focused automation, plus analysis & system performance research.",
-            java: "<b>Java</b>: My main backend language at work, the Java components I work on are optimized, distributed, and utilize both OSS and in-house libraries.",
-            rust: "<b>Rust</b>: A recent convert, my Rust experience starts October of last year but since then I've worked on a blazingly fast log parser and an easy-to-use Avro Kafka pub/sub library at work, also my go-to for learning smart contract development at home.",
-            go: "<b>Go</b>: During my Walmart internship, I created the backend of a media-heavy RESTful web app with a Mongo backend in Go. I'm a fan of Go's channels & concurrency approach.",
-            flask: "<b>Flask</b>: Used in both personal and professional webapps that are quick and easy to iterate on, I enjoy the flexibility and ease of Flask & Jinja2.",
-            apache: "<b>Apache</b>: Experienced with Kafka, ZooKeeper, Avro, Parquet, Maven etc. in a production setting.",
-            kubernetes: "<b>Kubernetes</b>: Learning hands-on at work as our Platform and DevOps team primarily use Kubernetes in deployments.",
-            grafana: "<b>Grafana</b>: Created a Grafana platform with multiple dashboards for trading, systems, and performance monitoring in real-time (with multiple source including InfluxDB).",
-            linux: "<b>Linux</b>: Both a personal and professional user of Linux, I'm consistently involved in investigations into low-level/real-time/kernel level operations.",
-            mysql: "<b>MySQL</b>: Using heavily on a component/microservice level (usually through a library such as Hibernate)."
-          };
-
-          let currentDescriptions = {
-            description: null,
-            description2: null
-          };
-
-          function toggleDescription(id, descriptionId) {
-            const descriptionElement = document.getElementById(descriptionId);
-
-            if (currentDescriptions[descriptionId] === id) {
-              descriptionElement.style.opacity = "0";
-              currentDescriptions[descriptionId] = null;
-            } else {
-              descriptionElement.innerHTML = descriptions[id];
-              descriptionElement.style.opacity = "1";
-              currentDescriptions[descriptionId] = id;
-            }
-          }
-        </script>
-
-      </section>
-      <section id="projects">
-        <div class="user-details">
-  <h1> Featured Projects </h1>
-</div>
-<div class="user-projects">
-  <div class="images-right">
-    <img alt="screencap" src="/assets/img/cap.png" />
-  </div>
-  <div class="contents">
-    <h3> Bogged.me </h3>
-    <p>I led a duo of my friend and I during GMU's PatriotHacks hackathon. We ended up winning with our Flask and MongoDB based paper trading app for cryptocurrency.</p>
+  <div class="contact">
+    <p class="dim" style="margin-bottom:6px">contact:</p>
+    <span class="lbl">[email:</span> <a id="mail" href="#">enable javascript</a><span class="lbl">]</span><br>
+    <span class="lbl">[telegram:</span> <a href="https://t.me/Camrnk">@Camrnk</a><span class="lbl">]</span><br>
+    <span class="lbl">[based:</span> chicago, il (mostly)<span class="lbl">]</span>
   </div>
 </div>
-<div class="user-projects">
-  <div class="images-left">
-    <a href="https://skillissuegg.vercel.app"><IMG SRC="/assets/img/solana.jpg"></a>
-  </div>
-  <div class="contents-right">
-    <h3> Solana-based 1v1 game </h3>
-    <p>Though I'm quite busy at work, I'm also currently building on some new ideas in the Solana space, including a fast-paced 1v1 game with stakes (POC/WIP right now!)</p>
-  </div>
-</div>
-      </section>
-      
-      <footer class="footer">
-    <p>&copy; Cameron Kruger</p>
-    <p>Build with Jekyll and <span class="love">❤</span> by <a href="https://github.com/nrandecker">Nathan Randecker</a></p>
-</footer>
-<script src="//cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="/assets/js/sweet-scroll.min.js"></script>
-<script src="/assets/js/main.js"></script>
-<!-- Google Analytics -->
 
 <script>
-var dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-if (dnt != "1" && dnt != "yes") {
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-ga('create', '', 'auto');
-ga('send', 'pageview');
-}
+/* ---------- email, assembled at runtime so scrapers miss it ---------- */
+(function(){
+  var a = document.getElementById('mail');
+  if(!a) return;
+  var u = 'cameron.r.kruger', d = 'gmail.com';
+  a.textContent = u + '@' + d;
+  a.href = 'mailto:' + u + '@' + d;
+})();
+
+/* ---------- ordered-dither mountain plate ---------- */
+(function(){
+  var c = document.getElementById('plate');
+  if(!c || !c.getContext) return;
+  var ctx = c.getContext('2d');
+  var W = c.width, H = c.height;
+  var img = ctx.createImageData(W, H);
+
+  var BAYER = [
+    [ 0, 8, 2,10],
+    [12, 4,14, 6],
+    [ 3,11, 1, 9],
+    [15, 7,13, 5]
+  ];
+  /* base, amplitude, cycles across the plate, phase, fill value */
+  var LAYERS = [
+    {base:0.44, amp:0.090, f:11.8, ph:0.4, val:0.52},
+    {base:0.60, amp:0.105, f: 7.9, ph:2.1, val:0.31},
+    {base:0.78, amp:0.070, f:17.3, ph:3.9, val:0.11}
+  ];
+
+  function scene(x, y){
+    var nx = x / W, ny = y / H;
+    var v = 0.94 - ny * 0.58;
+
+    var sr = W * 0.071;
+    var d = Math.hypot(x - W * 0.71, y - H * 0.30);
+    if(d < sr) v += 0.42;
+    else if(d < sr * 1.42) v += 0.2 * (1 - (d - sr) / (sr * 0.42));
+
+    for(var i = 0; i < LAYERS.length; i++){
+      var L = LAYERS[i];
+      var ridge = L.base
+        + Math.sin(nx * L.f + L.ph) * L.amp
+        + Math.sin(nx * L.f * 2.7 + L.ph * 1.9) * L.amp * 0.36
+        + Math.sin(nx * L.f * 6.1 + L.ph * 0.7) * L.amp * 0.13;
+      if(ny > ridge){
+        var depth = ny - ridge;
+        v = (depth * H < 1.0) ? 0.97 : L.val + depth * 0.34;
+      }
+    }
+    if(y % 2 === 1) v -= 0.03;
+    return v < 0 ? 0 : (v > 1 ? 1 : v);
+  }
+
+  for(var y = 0; y < H; y++){
+    for(var x = 0; x < W; x++){
+      var on = scene(x, y) > (BAYER[y % 4][x % 4] + 0.5) / 16;
+      var o = (y * W + x) * 4;
+      img.data[o]     = on ? 214 : 16;
+      img.data[o + 1] = on ? 217 : 17;
+      img.data[o + 2] = on ? 209 : 16;
+      img.data[o + 3] = 255;
+    }
+  }
+  ctx.putImageData(img, 0, 0);
+})();
 </script>
 
-  </body>
+</body>
+</html>

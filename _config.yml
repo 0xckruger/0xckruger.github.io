@@ -1,1 +1,5 @@
-theme: jekyll-theme-hacker
+title: Cameron Kruger
+description: Software engineer working in trading, with a long-running interest in crypto.
+url: https://ckruger.xyz
+baseurl: ""
+exclude: [README.md, gulpfile.js, yarn.lock, vendor, .idea, .claude, .mcp.json, scripts]
