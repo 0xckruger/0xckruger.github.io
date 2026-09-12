@@ -129,7 +129,8 @@
 </div>
 
 <script>
-/* ---------- email, assembled at runtime so scrapers miss it ---------- */
+
+  /* -- runtime email -- */
 (function(){
   var a = document.getElementById('mail');
   if(!a) return;
@@ -138,7 +139,7 @@
   a.href = 'mailto:' + u + '@' + d;
 })();
 
-/* ---------- ordered-dither mountain plate ---------- */
+/* -- ordered-dither mountain plate -- */
 (function(){
   var c = document.getElementById('plate');
   if(!c || !c.getContext) return;
