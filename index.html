@@ -42,12 +42,20 @@
 
   .page{max-width:640px; margin:0 auto; padding:60px 28px 70px}
 
-  .top{display:flex; gap:28px; align-items:flex-start; flex-wrap:wrap}
-  #plate{width:240px; height:132px; image-rendering:pixelated;
-         image-rendering:crisp-edges; display:block; border:1px solid var(--faint)}
-  .id{min-width:0; padding-top:2px}
+  .top{display:flex; flex-direction:column; gap:22px}
+  .alpine{width:100%; margin:0}
+  #plate{width:100%; height:auto; aspect-ratio:64 / 33; display:block;
+         border:1px solid var(--faint); background:#0C0D0C}
+  .alpine-controls{display:flex; align-items:center; flex-wrap:wrap; gap:12px;
+                   margin-top:9px; font-size:10px; line-height:1.8; color:var(--dim)}
+  .alpine-controls[hidden]{display:none}
+  .alpine-controls button{padding:2px 0; min-height:24px; border:0; background:none; color:inherit;
+                          font:inherit; cursor:pointer}
+  .alpine-controls button:hover,.alpine-controls button[aria-pressed="true"]{color:var(--hot)}
+  #alpine-play{margin-left:auto; color:var(--text)}
+  .id{min-width:0; width:100%}
   h1{font-size:1.65rem; font-weight:400; letter-spacing:.01em; margin:0 0 16px; line-height:1.1}
-  .stack{display:flex; flex-direction:column; gap:1px; font-size:.92rem}
+  .stack{display:flex; flex-wrap:wrap; gap:16px; font-size:.92rem}
   .stack a{color:var(--dim); text-decoration:none; width:max-content}
   .stack a u{text-decoration:underline; text-underline-offset:2px}
   .stack a:hover{color:var(--hot)}
@@ -69,9 +77,9 @@
 
   @media (max-width:600px){
     .page{padding:38px 22px 56px}
-    #plate{width:100%; height:auto; aspect-ratio:240 / 132}
     h1{font-size:1.4rem}
     .stack{gap:10px}
+    .alpine-controls{gap:9px; font-size:9px}
   }
 </style>
 </head>
@@ -80,8 +88,19 @@
 <!-- try: curl -s https://ckruger.xyz/hi -->
 <div class="page">
   <div class="top">
-    <canvas id="plate" width="120" height="66" role="img"
-            aria-label="Dithered drawing of a mountain range at sunrise"></canvas>
+    <figure class="alpine">
+      <canvas id="plate" width="1024" height="528" role="img"
+              aria-label="Animated ASCII alpine panorama: sunrise, sunlit snow, sunset, and moonrise over jagged Himalayan-inspired peaks">
+        A high alpine mountain range beneath a rising sun and moon.
+      </canvas>
+      <figcaption class="alpine-controls" hidden>
+        <button type="button" data-phase="0.04" aria-label="View sunrise" aria-pressed="true">[sunrise]</button>
+        <button type="button" data-phase="0.25" aria-label="View daylight" aria-pressed="false">[day]</button>
+        <button type="button" data-phase="0.46" aria-label="View sunset" aria-pressed="false">[sunset]</button>
+        <button type="button" data-phase="0.60" aria-label="View moonrise" aria-pressed="false">[moonrise]</button>
+        <button type="button" id="alpine-play" aria-label="Pause alpine animation">[pause]</button>
+      </figcaption>
+    </figure>
     <div class="id">
       <h1>ckruger.xyz</h1>
       <div class="stack">
@@ -140,77 +159,8 @@
   a.href = 'mailto:' + u + '@' + d;
 })();
 
-/* -- ordered-dither mountain plate -- */
-(function(){
-  var c = document.getElementById('plate');
-  if(!c || !c.getContext) return;
-  var ctx = c.getContext('2d');
-  var W = c.width, H = c.height;
-  var img = ctx.createImageData(W, H);
-
-  var BAYER = [
-    [ 0, 8, 2,10],
-    [12, 4,14, 6],
-    [ 3,11, 1, 9],
-    [15, 7,13, 5]
-  ];
-  /* base, amplitude, cycles across the plate, phase, fill value */
-  var LAYERS = [
-    {base:0.44, amp:0.090, f:11.8, ph:0.4, val:0.52},
-    {base:0.60, amp:0.105, f: 7.9, ph:2.1, val:0.31},
-    {base:0.78, amp:0.070, f:17.3, ph:3.9, val:0.11}
-  ];
-
-  function scene(x, y){
-    var nx = x / W, ny = y / H;
-    var v = 0.94 - ny * 0.58;
-
-    var sr = W * 0.071;
-    var d = Math.hypot(x - W * 0.71, y - H * 0.30);
-    if(d < sr) v += 0.42;
-    else if(d < sr * 1.42) v += 0.2 * (1 - (d - sr) / (sr * 0.42));
-
-    for(var i = 0; i < LAYERS.length; i++){
-      var L = LAYERS[i];
-      var ridge = L.base
-        + Math.sin(nx * L.f + L.ph) * L.amp
-        + Math.sin(nx * L.f * 2.7 + L.ph * 1.9) * L.amp * 0.36
-        + Math.sin(nx * L.f * 6.1 + L.ph * 0.7) * L.amp * 0.13;
-      if(ny > ridge){
-        var depth = ny - ridge;
-        v = (depth * H < 1.0) ? 0.97 : L.val + depth * 0.34;
-      }
-    }
-    if(y % 2 === 1) v -= 0.03;
-    return v < 0 ? 0 : (v > 1 ? 1 : v);
-  }
-
-  for(var y = 0; y < H; y++){
-    for(var x = 0; x < W; x++){
-      var on = scene(x, y) > (BAYER[y % 4][x % 4] + 0.5) / 16;
-      var o = (y * W + x) * 4;
-      img.data[o]     = on ? 214 : 16;
-      img.data[o + 1] = on ? 217 : 17;
-      img.data[o + 2] = on ? 209 : 16;
-      img.data[o + 3] = 255;
-    }
-  }
-  ctx.putImageData(img, 0, 0);
-
-  /* size to a whole number of device pixels per canvas pixel so the dither stays even */
-  function fit(){
-    var dpr = window.devicePixelRatio || 1;
-    var s = window.innerWidth <= 600
-      ? Math.floor((c.parentNode.clientWidth - 2) * dpr / W)  /* fill the column, never overflow */
-      : Math.round(240 * dpr / W);                            /* ~240px beside the name */
-    s = Math.max(1, s);
-    c.style.width  = (s * W / dpr + 2) + 'px';
-    c.style.height = (s * H / dpr + 2) + 'px';
-  }
-  fit();
-  window.addEventListener('resize', fit);
-})();
 </script>
+<script src="/assets/js/alpine.js" defer></script>
 
 </body>
 </html>
