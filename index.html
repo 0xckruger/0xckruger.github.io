@@ -70,6 +70,12 @@
   ul.likes li{padding-left:1.35em; text-indent:-1.35em}
   ul.likes li::before{content:"\25C7\A0"; color:var(--dim)}
 
+  .latest-post{font-size:.92rem}
+  .latest-post h2{margin:0 0 6px; color:var(--dim); font-size:inherit; font-weight:400}
+  .latest-post a{text-underline-offset:2px; overflow-wrap:anywhere}
+  .latest-post a:hover{color:var(--hot)}
+  .latest-post time{display:block; margin-top:4px; color:var(--dim); font-size:.8rem}
+
   .contact{font-size:.92rem; line-height:1.9}
   .contact .lbl{color:var(--dim)}
   .contact a{color:var(--text); text-decoration:underline; text-underline-offset:2px}
@@ -105,8 +111,8 @@
       <h1>ckruger.xyz</h1>
       <div class="stack">
         <a href="https://github.com/0xckruger"><span class="br">[</span><u>github</u><span class="br">]</span></a>
-        <a href="https://ckruger.bearblog.dev/"><span class="br">[</span><u>blog</u><span class="br">]</span></a>
-        <a href="/assets/files/Cameron_Kruger_Resume_Trading_Systems_Public.pdf"><span class="br">[</span><u>resume</u><span class="br">]</span></a>
+        <a href="https://ckruger.bearblog.dev/blog/"><span class="br">[</span><u>blog</u><span class="br">]</span></a>
+        <a href="/assets/files/Cameron_Kruger_Resume.pdf"><span class="br">[</span><u>resume</u><span class="br">]</span></a>
         <a href="https://www.linkedin.com/in/cameron-kruger-6b4b82122/"><span class="br">[</span><u>linkedin</u><span class="br">]</span></a>
       </div>
     </div>
@@ -140,6 +146,16 @@
 
   <hr>
 
+  <section class="latest-post" aria-labelledby="latest-post-heading">
+    <h2 id="latest-post-heading">latest blog post:</h2>
+    <p id="latest-post-content" aria-live="polite">
+      <a href="https://ckruger.bearblog.dev/what-i-learned-from-running-a-liquidity-incentive-bot-on-kalshi/">What I learned from running a liquidity incentive bot on Kalshi</a>
+      <time datetime="2026-11-09T22:07:25Z">Nov 9, 2026</time>
+    </p>
+  </section>
+
+  <hr>
+
   <div class="contact">
     <p class="dim" style="margin-bottom:6px">contact:</p>
     <span class="lbl">[email:</span> <a id="mail" href="#">enable javascript</a><span class="lbl">]</span><br>
@@ -161,6 +177,7 @@
 
 </script>
 <script src="/assets/js/alpine.js" defer></script>
+<script src="/assets/js/blog.js" defer></script>
 
 </body>
 </html>
